@@ -1,0 +1,14 @@
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\win-x64\Bruteforce.exe
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\win-x64\Bruteforce.deps.json
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\win-x64\Bruteforce.runtimeconfig.json
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\win-x64\Bruteforce.dll
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\win-x64\Bruteforce.pdb
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.AssemblyInfoInputs.cache
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.AssemblyInfo.cs
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.csproj.CoreCompileInputs.cache
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.dll
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\refint\Bruteforce.dll
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.pdb
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\Bruteforce.genruntimeconfig.cache
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\win-x64\ref\Bruteforce.dll

@@ -1,0 +1,2 @@
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\SelfContained\Bruteforce.pdb
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\SelfContained\Bruteforce.exe
