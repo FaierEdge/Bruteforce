@@ -1,9 +1,5 @@
 ﻿using System.Diagnostics;
 using Ionic.Zip;
-using System.IO;
-//using System.Diagnostics.Metrics;
-//using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Bruteforce
 {
@@ -81,14 +77,8 @@ namespace Bruteforce
 				Console.WriteLine("Dictionary not found!");
 			}
 			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;
-			
-			
+
 			Timer.Start();
-
-			//File.ReadLines(DictionaryPath);
-
-
-
 
 			try
 			{
@@ -97,45 +87,19 @@ namespace Bruteforce
 					foreach (string CurrentPassword in File.ReadLines(DictionaryPath))
 					{
 						CheckedPasswords++;
-
 						try
 						{
 							Zip.Password = CurrentPassword;
-
 							foreach (ZipEntry Entry in Zip)
 							{
-								//Entry.Password = CurrentPassword;
-								//Entry.Extract(@"C:\Temp", ExtractExistingFileAction.OverwriteSilently);
 								Entry.Extract(Path.GetTempPath(), ExtractExistingFileAction.OverwriteSilently);
-
-								Console.WriteLine("password is correct");
-								Console.WriteLine($"Time = {Timer.Elapsed}");
-
 								PasswordFound = true;
 								FoundPassword = CurrentPassword;
-								/*
-								Timer.Stop();
-
-								Console.ForegroundColor = ConsoleColor.Green;
-								Console.WriteLine("Password found!");
-								Console.ForegroundColor = ConsoleColor.White;
-								Console.Write("Password: ");
-								Console.ForegroundColor = ConsoleColor.Yellow;
-								Console.WriteLine(FoundPassword);
-								Console.ForegroundColor = ConsoleColor.White;
-								Console.WriteLine(CheckedPasswords);
-								Console.WriteLine(Timer);
-								*/
 								break;
 							}
-
-							if (PasswordFound)
-								break;
+							if (PasswordFound) break;
 						}
-						catch
-						{
-							// wrong pass
-						}
+						catch { }
 					}
 				}
 			}
@@ -145,65 +109,36 @@ namespace Bruteforce
 				Console.WriteLine($"Error: {Ex.Message}");
 				Console.ForegroundColor = ConsoleColor.White;
 			}
-			
 
-
-			//foreach (string CurrentPassword in File.ReadLines(DictionaryPath))
-			//{
-			//	CheckedPasswords++;
-			//checkPass
-
-
-			// написать ридми
-			// доделать гитигнор
-
-
-
-			//}
-			//PasswordFound = true;
+			ShowLabel();
+			Timer.Stop();
 
 			if (PasswordFound)
 			{
-				Timer.Stop();
 				Console.ForegroundColor = ConsoleColor.Green;
-				Console.WriteLine("Password found!");
+				Console.WriteLine("Password found!\n");
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.Write("Password: ");
 				Console.ForegroundColor = ConsoleColor.Yellow;
 				Console.WriteLine(FoundPassword);
 				Console.ForegroundColor = ConsoleColor.White;
-				Console.WriteLine(CheckedPasswords);
-				Console.WriteLine(Timer); // решить проблему с таймером чтобы показывалось не более 100 мс
-				//Console.WriteLine(CheckedPasswords / Timer);
-				//checked:
-				//time:
-				//Speed:
-
-
-
-
+				Console.WriteLine($"Passwords checked: {CheckedPasswords}");
+				Console.WriteLine($"Time: {Timer}");
 			}
+			else
+			{
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Password not found!\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"Passwords checked: {CheckedPasswords}");
+                Console.WriteLine($"Time: {Timer}");
+            }
 
 
 
-
-
-
-
-
-
-
-
-
-
-			// добавить в конце
-			//Timer.Stop();
-			//Console.WriteLine("время выполнения = " + Timer);
-
-
-			//Console.WriteLine("sosi hui");
-			//Console.ReadKey();
-		}
+			// решить проблему с таймером чтобы показывалось не более 100 мс
+			// Сделать среднюю скорость поиска (кол-во паролей / время)
+        }
 
 		static void ShowLabel()
 		{
