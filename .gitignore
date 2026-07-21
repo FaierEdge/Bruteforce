@@ -1,4 +1,5 @@
 .vs/
-.obj/
+obj/
 *.csproj
 *.sln
+bin/Debug/net8.0-windows/win-x64
