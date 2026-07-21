@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using Ionic.Zip;
+using System.IO;
 //using System.Diagnostics.Metrics;
 //using System.Windows.Forms;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -18,13 +20,14 @@ namespace Bruteforce
 			string FoundPassword = "";
 			bool PasswordFound = false;
 			int CheckedPasswords = 0;
+			Stopwatch Timer = new Stopwatch();
 
 			ShowLabel();
 			Console.WriteLine("Program for bruteforcing archives.");
 			Console.Write("Supports the ");
 			Console.ForegroundColor = ConsoleColor.Green;
 			Console.Write("*.zip"); // Console.Write("*.zip, *.7z, and *.rar");
-            Console.ForegroundColor= ConsoleColor.White;
+			Console.ForegroundColor= ConsoleColor.White;
 			Console.WriteLine(" extensions for archives.");
 			Console.Write("And the ");
 			Console.ForegroundColor = ConsoleColor.Green;
@@ -44,15 +47,15 @@ namespace Bruteforce
 			if (Choice == "1")
 			{
 				Console.Write("Enter the path to the archive: ");
-				ArchivePath = SelectFiles("Select archive", "Archive files (*.zip;*.7z;*.rar)|*.zip;*.7z;*.rar|All files (*.*)|*.*");
+				ArchivePath = SelectFiles("Select archive", "Archive files (*.zip)|*.zip|All files (*.*)|*.*"); // ArchivePath = SelectFiles("Select archive", "Archive files (*.zip;*.7z;*.rar)|*.zip;*.7z;*.rar|All files (*.*)|*.*");
 				Console.WriteLine();
 				Console.Write("Enter the path to the dictionary: ");
 				DictionaryPath = SelectFiles("Select dictionary", "Text files (*.txt)|*.txt|All files (*.*)|*.*");
 			}
 			else if (Choice == "2")
 			{
-                Console.Write("Enter the path to the archive: ");
-                ArchivePath = Console.ReadLine();
+				Console.Write("Enter the path to the archive: ");
+				ArchivePath = Console.ReadLine();
 				Console.WriteLine();
 				Console.Write("Enter the path to the dictionary: ");
 				DictionaryPath = Console.ReadLine();
@@ -69,28 +72,94 @@ namespace Bruteforce
 				Console.Write("Error. ");
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine("Archive not found!");
-            }
-            if (!File.Exists(DictionaryPath))
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("Error. ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Dictionary not found!");
-            }
+			}
+			if (!File.Exists(DictionaryPath))
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.Write("Error. ");
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine("Dictionary not found!");
+			}
 			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;
-
-			Stopwatch Timer = new Stopwatch();
+			
+			
 			Timer.Start();
 
-			File.ReadLines(DictionaryPath);
-			
-			foreach (string CurrentPassword in File.ReadLines(DictionaryPath))
+			//File.ReadLines(DictionaryPath);
+
+
+
+
+			try
 			{
-				CheckedPasswords++;
-				//checkPass
+				using (ZipFile Zip = ZipFile.Read(ArchivePath))
+				{
+					foreach (string CurrentPassword in File.ReadLines(DictionaryPath))
+					{
+						CheckedPasswords++;
 
+						try
+						{
+							Zip.Password = CurrentPassword;
 
+							foreach (ZipEntry Entry in Zip)
+							{
+								//Entry.Password = CurrentPassword;
+								//Entry.Extract(@"C:\Temp", ExtractExistingFileAction.OverwriteSilently);
+								Entry.Extract(Path.GetTempPath(), ExtractExistingFileAction.OverwriteSilently);
+
+								Console.WriteLine("password is correct");
+								Console.WriteLine($"Time = {Timer.Elapsed}");
+
+								PasswordFound = true;
+								FoundPassword = CurrentPassword;
+								/*
+								Timer.Stop();
+
+								Console.ForegroundColor = ConsoleColor.Green;
+								Console.WriteLine("Password found!");
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.Write("Password: ");
+								Console.ForegroundColor = ConsoleColor.Yellow;
+								Console.WriteLine(FoundPassword);
+								Console.ForegroundColor = ConsoleColor.White;
+								Console.WriteLine(CheckedPasswords);
+								Console.WriteLine(Timer);
+								*/
+								break;
+							}
+
+							if (PasswordFound)
+								break;
+						}
+						catch
+						{
+							// wrong pass
+						}
+					}
+				}
 			}
+			catch (Exception Ex)
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine($"Error: {Ex.Message}");
+				Console.ForegroundColor = ConsoleColor.White;
+			}
+			
+
+
+			//foreach (string CurrentPassword in File.ReadLines(DictionaryPath))
+			//{
+			//	CheckedPasswords++;
+			//checkPass
+
+
+			// написать ридми
+			// доделать гитигнор
+
+
+
+			//}
 			//PasswordFound = true;
 
 			if (PasswordFound)
@@ -127,16 +196,16 @@ namespace Bruteforce
 
 
 
-            // добавить в конце
-            //Timer.Stop();
-            //Console.WriteLine("время выполнения = " + Timer);
+			// добавить в конце
+			//Timer.Stop();
+			//Console.WriteLine("время выполнения = " + Timer);
 
 
-            //Console.WriteLine("sosi hui");
-            //Console.ReadKey();
-        }
+			//Console.WriteLine("sosi hui");
+			//Console.ReadKey();
+		}
 
-        static void ShowLabel()
+		static void ShowLabel()
 		{
 			string Label = "===== BRUTEFORCE =====";
 			ConsoleColor[] Pattern = [ConsoleColor.Red, ConsoleColor.Yellow, ConsoleColor.Green, ConsoleColor.Cyan, ConsoleColor.Blue];

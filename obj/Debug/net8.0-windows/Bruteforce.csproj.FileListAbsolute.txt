@@ -12,3 +12,7 @@ C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\refint\Bruteforc
 C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\Bruteforce.pdb
 C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\Bruteforce.genruntimeconfig.cache
 C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\ref\Bruteforce.dll
+C:\Users\Faier_Edge\Desktop\Bruteforce\bin\Debug\net8.0-windows\DotNetZip.dll
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\Bruteforce.csproj.AssemblyReference.cache
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\Bruteforce.sourcelink.json
+C:\Users\Faier_Edge\Desktop\Bruteforce\obj\Debug\net8.0-windows\Bruteforce.csproj.Up2Date

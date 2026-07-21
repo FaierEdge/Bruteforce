@@ -1,10 +1,31 @@
 {
   "version": 2,
-  "dgSpecHash": "0cqPT5cPCu8=",
+  "dgSpecHash": "bfkqCmWPiZM=",
   "success": true,
   "projectFilePath": "C:\\Users\\Faier_Edge\\Desktop\\Bruteforce\\Bruteforce.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.29\\microsoft.net.illink.tasks.8.0.29.nupkg.sha512"
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\dotnetzip\\1.16.0\\dotnetzip.1.16.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.1\\microsoft.netcore.platforms.3.1.1.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.text.encoding.codepages\\4.7.1\\system.text.encoding.codepages.4.7.1.nupkg.sha512",
+    "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "У пакета \"DotNetZip\" 1.16.0 есть известная уязвимость https://github.com/advisories/GHSA-xhg6-9j5j-w4vf (уровень серьезности: высокий)",
+      "projectPath": "C:\\Users\\Faier_Edge\\Desktop\\Bruteforce\\Bruteforce.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Faier_Edge\\Desktop\\Bruteforce\\Bruteforce.csproj",
+      "libraryId": "DotNetZip",
+      "targetGraphs": [
+        "net8.0-windows7.0"
+      ]
+    }
+  ]
 }
