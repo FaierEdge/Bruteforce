@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Bruteforce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3048e9ab6feb6e493cee033d47cd98ccc1f6fa81")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b2f1efff71b73822fef18f944646a087fd0f4561")]
 [assembly: System.Reflection.AssemblyProductAttribute("Bruteforce")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Bruteforce")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
