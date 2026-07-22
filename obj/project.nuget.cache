@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "m6v8TxkcgtM=",
+  "dgSpecHash": "bfkqCmWPiZM=",
   "success": true,
   "projectFilePath": "C:\\Users\\Faier_Edge\\Desktop\\Bruteforce\\Bruteforce.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Faier_Edge\\.nuget\\packages\\dotnetzip\\1.16.0\\dotnetzip.1.16.0.nupkg.sha512",
-    "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.29\\microsoft.net.illink.tasks.8.0.29.nupkg.sha512",
     "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.1\\microsoft.netcore.platforms.3.1.1.nupkg.sha512",
     "C:\\Users\\Faier_Edge\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Faier_Edge\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
@@ -25,8 +24,7 @@
       "filePath": "C:\\Users\\Faier_Edge\\Desktop\\Bruteforce\\Bruteforce.csproj",
       "libraryId": "DotNetZip",
       "targetGraphs": [
-        "net8.0-windows7.0",
-        "net8.0-windows7.0/win-x64"
+        "net8.0-windows7.0"
       ]
     }
   ]

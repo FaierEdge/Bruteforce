@@ -49,12 +49,6 @@
             "DotNetZip": {
               "target": "Package",
               "version": "[1.16.0, )"
-            },
-            "Microsoft.NET.ILLink.Tasks": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.29, )",
-              "autoReferenced": true
             }
           },
           "imports": [
@@ -77,11 +71,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.316/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
         }
       }
     }
