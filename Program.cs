@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Security.Authentication;
 using Ionic.Zip;
 
 namespace Bruteforce
@@ -16,6 +17,7 @@ namespace Bruteforce
 			string FoundPassword = "";
 			bool PasswordFound = false;
 			int CheckedPasswords = 0;
+			int TimeSeconds, TimeMilliseconds, Seconds, Hours, Minutes, Milliseconds;
 			Stopwatch Timer = new Stopwatch();
 
 			ShowLabel();
@@ -37,10 +39,10 @@ namespace Bruteforce
 			Console.WriteLine("2 - Enter paths manually");
 			Console.WriteLine();
 			Console.Write("Selection: ");
-			Choice = Console.ReadLine();
+			//Choice = Console.ReadLine();
 
 			ShowLabel();
-			if (Choice == "1")
+			/*if (Choice == "1")
 			{
 				Console.Write("Enter the path to the archive: ");
 				ArchivePath = SelectFiles("Select archive", "Archive files (*.zip)|*.zip|All files (*.*)|*.*"); // ArchivePath = SelectFiles("Select archive", "Archive files (*.zip;*.7z;*.rar)|*.zip;*.7z;*.rar|All files (*.*)|*.*");
@@ -76,11 +78,16 @@ namespace Bruteforce
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine("Dictionary not found!");
 			}
-			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;
+			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;*/
+			
+			//=============TEMP============
+			ArchivePath = "C:\\Users\\Faier_Edge\\Desktop\\blya5.zip";
+			DictionaryPath = "C:\\Users\\Faier_Edge\\Desktop\\Numbers.txt";
+			//=============================
 
 			Timer.Start();
 
-			try
+            try
 			{
 				using (ZipFile Zip = ZipFile.Read(ArchivePath))
 				{
@@ -99,7 +106,7 @@ namespace Bruteforce
 							}
 							if (PasswordFound) break;
 						}
-						catch { }
+						catch {}
 					}
 				}
 			}
@@ -110,9 +117,10 @@ namespace Bruteforce
 				Console.ForegroundColor = ConsoleColor.White;
 			}
 
-			ShowLabel();
-			Timer.Stop();
 
+
+            ShowLabel();
+			Timer.Stop();
 			if (PasswordFound)
 			{
 				Console.ForegroundColor = ConsoleColor.Green;
@@ -121,24 +129,60 @@ namespace Bruteforce
 				Console.Write("Password: ");
 				Console.ForegroundColor = ConsoleColor.Yellow;
 				Console.WriteLine(FoundPassword);
-				Console.ForegroundColor = ConsoleColor.White;
-				Console.WriteLine($"Passwords checked: {CheckedPasswords}");
-				Console.WriteLine($"Time: {Timer}");
 			}
 			else
 			{
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Password not found!\n");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Passwords checked: {CheckedPasswords}");
-                Console.WriteLine($"Time: {Timer}");
-            }
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("Password not found!\n");
+			}
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine($"Passwords checked: {CheckedPasswords}");
+			TimeSeconds = Convert.ToInt32(Timer.Elapsed.TotalSeconds);
+			TimeMilliseconds = Convert.ToInt32(Timer.Elapsed.TotalMilliseconds);
+			Seconds = TimeSeconds;
+			Hours = Seconds / 3600;
+			Seconds -= Hours * 3600;
+			Minutes = Seconds / 60;
+			Seconds -= Minutes * 60;
+			Milliseconds = (TimeMilliseconds - (TimeSeconds * 1000));
+			Console.Write($"Time: ");
+			if (Hours < 10) Console.Write($"0{Hours}:");
+			if (Minutes < 10) Console.Write($"0{Minutes}:");
+			if (Seconds < 10) Console.Write($"0{Seconds}:");
+			Console.WriteLine(Milliseconds);
+
+			// добавить скорость 
+
+
+			//int Hours = TimeSeconds / 3600;
+			//int Minutes = TimeSeconds / 60 - (Hours * 60);
+			//int Seconds = TimeSeconds / 60 - (Minutes * 60);
+
+			//Console.WriteLine($"Hours = {Hours}");
+			//Console.WriteLine($"Minutes = {Minutes}");
+			//Console.WriteLine($"Seconds = {Seconds}");
 
 
 
+
+
+
+
+
+			//time++
+			//Console.WriteLine($"Time2: {Hui / 3600}:{(Hui / 3600) / 60}:{((Hui / 3600) / 60) / 60}");
+			// делать через главную переменную таймсекондс и второстепенные переменные (hours, minutes, seconds)
+			// вынести из витвления повторяющиеся функции
+
+
+			//Hui = Math.Round(Hui, 2);
+			//Console.WriteLine($"seconds = {Hui}");
+
+
+			// 00:00:00.2147490
 			// решить проблему с таймером чтобы показывалось не более 100 мс
 			// Сделать среднюю скорость поиска (кол-во паролей / время)
-        }
+		}
 
 		static void ShowLabel()
 		{
