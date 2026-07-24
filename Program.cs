@@ -18,7 +18,8 @@ namespace Bruteforce
 			bool PasswordFound = false;
 			int CheckedPasswords = 0;
 			int TimeSeconds, TimeMilliseconds, Seconds, Hours, Minutes, Milliseconds;
-			Stopwatch Timer = new Stopwatch();
+			double Speed;
+            Stopwatch Timer = new Stopwatch();
 
 			ShowLabel();
 			Console.WriteLine("Program for bruteforcing archives.");
@@ -137,51 +138,13 @@ namespace Bruteforce
 			}
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine($"Passwords checked: {CheckedPasswords}");
-			TimeSeconds = Convert.ToInt32(Timer.Elapsed.TotalSeconds);
-			TimeMilliseconds = Convert.ToInt32(Timer.Elapsed.TotalMilliseconds);
-			Seconds = TimeSeconds;
-			Hours = Seconds / 3600;
-			Seconds -= Hours * 3600;
-			Minutes = Seconds / 60;
-			Seconds -= Minutes * 60;
-			Milliseconds = (TimeMilliseconds - (TimeSeconds * 1000));
-			Console.Write($"Time: ");
-			if (Hours < 10) Console.Write($"0{Hours}:");
-			if (Minutes < 10) Console.Write($"0{Minutes}:");
-			if (Seconds < 10) Console.Write($"0{Seconds}:");
-			Console.WriteLine(Milliseconds);
-
-			// добавить скорость 
-
-
-			//int Hours = TimeSeconds / 3600;
-			//int Minutes = TimeSeconds / 60 - (Hours * 60);
-			//int Seconds = TimeSeconds / 60 - (Minutes * 60);
-
-			//Console.WriteLine($"Hours = {Hours}");
-			//Console.WriteLine($"Minutes = {Minutes}");
-			//Console.WriteLine($"Seconds = {Seconds}");
-
-
-
-
-
-
-
-
-			//time++
-			//Console.WriteLine($"Time2: {Hui / 3600}:{(Hui / 3600) / 60}:{((Hui / 3600) / 60) / 60}");
-			// делать через главную переменную таймсекондс и второстепенные переменные (hours, minutes, seconds)
-			// вынести из витвления повторяющиеся функции
-
-
-			//Hui = Math.Round(Hui, 2);
-			//Console.WriteLine($"seconds = {Hui}");
-
-
-			// 00:00:00.2147490
-			// решить проблему с таймером чтобы показывалось не более 100 мс
-			// Сделать среднюю скорость поиска (кол-во паролей / время)
+            Console.Write($"Time: ");
+			if (Timer.Elapsed.Hours < 10) Console.Write($"0{Timer.Elapsed.Hours}:");
+			if (Timer.Elapsed.Minutes < 10) Console.Write($"0{Timer.Elapsed.Minutes}:");
+			if (Timer.Elapsed.Seconds < 10) Console.Write($"0{Timer.Elapsed.Seconds}:");
+			Console.WriteLine(Timer.Elapsed.Milliseconds);
+			Speed = CheckedPasswords / Timer.Elapsed.TotalSeconds;
+			Console.WriteLine($"Speed: {Speed:F2} psw/s");
 		}
 
 		static void ShowLabel()
