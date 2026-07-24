@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Security.Authentication;
 using Ionic.Zip;
 
 namespace Bruteforce
@@ -11,15 +10,12 @@ namespace Bruteforce
 		{
 			// Variables
 			Console.Title = "Bruteforce";
-			string Choice;
-			string ArchivePath = "";
-			string DictionaryPath = "";
-			string FoundPassword = "";
 			bool PasswordFound = false;
-			int CheckedPasswords = 0;
-			int TimeSeconds, TimeMilliseconds, Seconds, Hours, Minutes, Milliseconds;
-			double Speed;
-            Stopwatch Timer = new Stopwatch();
+            double Speed;
+            int CheckedPasswords = 0;
+            string Choice, ArchivePath, DictionaryPath;
+			string FoundPassword = "";
+			Stopwatch Timer = new ();
 
 			ShowLabel();
 			Console.WriteLine("Program for bruteforcing archives.");
@@ -40,10 +36,10 @@ namespace Bruteforce
 			Console.WriteLine("2 - Enter paths manually");
 			Console.WriteLine();
 			Console.Write("Selection: ");
-			//Choice = Console.ReadLine();
+			Choice = Console.ReadLine();
 
 			ShowLabel();
-			/*if (Choice == "1")
+			if (Choice == "1")
 			{
 				Console.Write("Enter the path to the archive: ");
 				ArchivePath = SelectFiles("Select archive", "Archive files (*.zip)|*.zip|All files (*.*)|*.*"); // ArchivePath = SelectFiles("Select archive", "Archive files (*.zip;*.7z;*.rar)|*.zip;*.7z;*.rar|All files (*.*)|*.*");
@@ -79,16 +75,10 @@ namespace Bruteforce
 				Console.ForegroundColor = ConsoleColor.White;
 				Console.WriteLine("Dictionary not found!");
 			}
-			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;*/
+			if (!File.Exists(ArchivePath) || !File.Exists(DictionaryPath)) return;
 			
-			//=============TEMP============
-			ArchivePath = "C:\\Users\\Faier_Edge\\Desktop\\blya5.zip";
-			DictionaryPath = "C:\\Users\\Faier_Edge\\Desktop\\Numbers.txt";
-			//=============================
-
 			Timer.Start();
-
-            try
+			try
 			{
 				using (ZipFile Zip = ZipFile.Read(ArchivePath))
 				{
@@ -118,9 +108,7 @@ namespace Bruteforce
 				Console.ForegroundColor = ConsoleColor.White;
 			}
 
-
-
-            ShowLabel();
+			ShowLabel();
 			Timer.Stop();
 			if (PasswordFound)
 			{
@@ -138,7 +126,7 @@ namespace Bruteforce
 			}
 			Console.ForegroundColor = ConsoleColor.White;
 			Console.WriteLine($"Passwords checked: {CheckedPasswords}");
-            Console.Write($"Time: ");
+			Console.Write($"Time: ");
 			if (Timer.Elapsed.Hours < 10) Console.Write($"0{Timer.Elapsed.Hours}:");
 			if (Timer.Elapsed.Minutes < 10) Console.Write($"0{Timer.Elapsed.Minutes}:");
 			if (Timer.Elapsed.Seconds < 10) Console.Write($"0{Timer.Elapsed.Seconds}:");
@@ -163,7 +151,7 @@ namespace Bruteforce
 
 		static string SelectFiles(string Title, string Filter)
 		{
-			OpenFileDialog Dialog = new OpenFileDialog();
+			OpenFileDialog Dialog = new ();
 			Dialog.Title = Title;
 			Dialog.Filter = Filter;
 			Dialog.Multiselect = false;
